@@ -1,23 +1,119 @@
 .homeContainer {
-  @apply w-4/12 mx-auto p-2 border border-white rounded mt-8 text-white flex flex-col items-center;
+  @apply min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-8;
+}
 
-  h1 {
-    @apply text-xl text-center;
+/* Header */
+.header {
+  @apply flex items-center justify-between w-full max-w-4xl mb-12;
+}
+
+.logo {
+  @apply flex items-center gap-2;
+}
+
+.logoIcon {
+  @apply w-8 h-8 bg-blue-600 rounded flex items-center justify-center;
+}
+
+.logoText {
+  @apply text-xl font-semibold text-white;
+}
+
+.nav {
+  @apply flex items-center gap-6;
+}
+
+.nav a {
+  @apply text-gray-300 hover:text-white transition-colors;
+}
+
+/* Main Content */
+.main {
+  @apply w-full max-w-md;
+}
+
+.hero {
+  @apply text-center mb-8;
+}
+
+.heroTitle {
+  @apply text-3xl font-bold mb-4;
+}
+
+.accent {
+  @apply text-blue-400;
+}
+
+.heroSubtitle {
+  @apply text-gray-400 mb-8;
+}
+
+/* Meeting Actions */
+.meetingActions {
+  @apply bg-gray-800 rounded-lg p-6 border border-gray-700;
+}
+
+.joinSection h3 {
+  @apply text-lg font-medium mb-4;
+}
+
+.joinForm {
+  @apply flex flex-col gap-3;
+}
+
+.meetingInput {
+  @apply w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded text-white placeholder-gray-400 focus:outline-none focus:border-blue-500;
+}
+
+.joinButton {
+  @apply w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 rounded font-medium flex items-center justify-center gap-2 transition-colors;
+}
+
+.divider {
+  @apply flex items-center justify-center my-4;
+}
+
+.divider span {
+  @apply px-3 py-1 bg-gray-700 rounded text-sm text-gray-400;
+}
+
+.createSection {
+  @apply flex justify-center;
+}
+
+.createButton {
+  @apply w-full px-4 py-3 bg-green-600 hover:bg-green-700 rounded font-medium flex items-center justify-center gap-2 transition-colors;
+}
+
+/* Features Section - Hidden by default, can be shown if needed */
+.features {
+  @apply hidden;
+}
+
+/* Footer - Simplified */
+.footer {
+  @apply mt-12 text-center;
+}
+
+.footerContent {
+  @apply flex items-center justify-center gap-2 text-gray-400 text-sm;
+}
+
+.footerLogo {
+  @apply flex items-center gap-1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    @apply flex-col gap-4 mb-8;
   }
-
-  button {
-    @apply bg-buttonPrimary py-2 px-4 rounded;
+  
+  .main {
+    @apply w-full max-w-sm;
   }
-
-  .enterRoom {
-    @apply flex flex-col items-center mt-3 w-full;
-
-    input {
-      @apply text-black text-lg p-1 rounded w-9/12 mb-3;
-    }
-  }
-
-  .separatorText {
-    @apply my-3 text-xl;
+  
+  .heroTitle {
+    @apply text-2xl;
   }
 }

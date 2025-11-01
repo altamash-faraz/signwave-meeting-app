@@ -1,4 +1,15 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SignWave Meeting App
+
+A modern, professional video conferencing application built with Next.js and WebRTC technology. SignWave provides seamless video meetings with real-time communication features.
+
+## Features
+
+- **Instant Meetings**: Create or join meetings with a simple room ID
+- **High-Quality Video**: Crystal clear video and audio communication
+- **Real-time Chat**: Built-in messaging system for seamless collaboration
+- **Screen Sharing**: Share your screen for presentations and demos
+- **Responsive Design**: Works perfectly on desktop and mobile devices
+- **Secure**: End-to-end encrypted communications
 
 ## Getting Started
 

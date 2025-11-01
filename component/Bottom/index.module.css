@@ -1,13 +1,38 @@
-.bottomMenu {
-  @apply absolute flex justify-between bottom-5 left-0 right-0 mx-auto;
-  width: 300px;
-  .icon {
-    @apply p-4 rounded-full text-white cursor-pointer;
-    background-color: theme("colors.secondary");
+.bottomContainer {
+  @apply fixed bottom-0 left-0 right-0 bg-gray-800 border-t border-gray-700 p-4;
+}
 
-    &:hover,
-    &.active {
-      background-color: theme("colors.buttonPrimary");
-    }
+.controls {
+  @apply flex items-center justify-center gap-4;
+}
+
+.controlButton {
+  @apply w-12 h-12 rounded-full flex items-center justify-center bg-gray-700 text-white hover:bg-gray-600 transition-colors cursor-pointer border-none;
+}
+
+.controlButton.muted {
+  @apply bg-red-600 hover:bg-red-700;
+}
+
+.controlButton.disabled {
+  @apply bg-red-600 hover:bg-red-700;
+}
+
+.controlButton.endCall {
+  @apply bg-red-600 hover:bg-red-700;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .bottomContainer {
+    @apply p-3;
+  }
+  
+  .controls {
+    @apply gap-6;
+  }
+  
+  .controlButton {
+    @apply w-14 h-14;
   }
 }

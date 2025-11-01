@@ -2,6 +2,11 @@
   @apply relative overflow-hidden mb-5 h-full;
 }
 
+/* Mirror effect for all video elements */
+.playerContainer video {
+  transform: scaleX(-1);
+}
+
 .active {
   @apply rounded-lg;
 }

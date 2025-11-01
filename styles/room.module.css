@@ -1,14 +1,63 @@
-.activePlayerContainer {
-  @apply absolute w-9/12 left-0 right-0 mx-auto;
-  top: 20px;
-  bottom: 50px;
-  height: calc(100vh - 20px - 100px);
+/* Room Container */
+.roomContainer {
+  @apply min-h-screen bg-gray-900 relative;
 }
 
+/* Main Video Area */
+.activePlayerContainer {
+  @apply absolute left-6 right-80 top-6 bottom-20 bg-black rounded border border-gray-700;
+}
+
+.activePlayerContainer.fullWidth {
+  @apply right-6;
+}
+
+/* Sidebar for inactive players */
 .inActivePlayerContainer {
-  @apply absolute flex flex-col overflow-y-auto;
-  width: 200px;
-  height: calc(100vh - 20px);
-  right: 20px;
-  top: 20px;
+  @apply absolute right-6 top-6 bottom-20 w-72 flex flex-col gap-3 overflow-y-auto;
+}
+
+/* Video Player Cards */
+.playerCard {
+  @apply relative bg-gray-800 rounded border border-gray-700 h-48;
+}
+
+.playerCard video {
+  transform: scaleX(-1);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.activePlayerCard {
+  @apply w-full h-full relative bg-black;
+}
+
+.activePlayerCard video {
+  transform: scaleX(-1);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .activePlayerContainer {
+    @apply right-6 bottom-32;
+  }
+  
+  .inActivePlayerContainer {
+    @apply relative right-auto top-auto bottom-auto w-full h-32 flex-row overflow-x-auto mt-4;
+  }
+  
+  .playerCard {
+    @apply h-32;
+    min-width: 12rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .activePlayerContainer {
+    @apply left-4 right-4 top-4 bottom-24;
+  }
 }

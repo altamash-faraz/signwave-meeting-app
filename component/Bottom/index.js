@@ -7,26 +7,32 @@ const Bottom = (props) => {
   const { muted, playing, toggleAudio, toggleVideo, leaveRoom } = props;
 
   return (
-    <div className={styles.bottomMenu}>
-      {muted ? (
-        <MicOff
-          className={cx(styles.icon, styles.active)}
-          size={55}
+    <div className={styles.bottomContainer}>
+      <div className={styles.controls}>
+        <button
+          className={cx(styles.controlButton, muted && styles.muted)}
           onClick={toggleAudio}
-        />
-      ) : (
-        <Mic className={styles.icon} size={55} onClick={toggleAudio} />
-      )}
-      {playing ? (
-        <Video className={styles.icon} size={55} onClick={toggleVideo} />
-      ) : (
-        <VideoOff
-          className={cx(styles.icon, styles.active)}
-          size={55}
+          title={muted ? "Unmute microphone" : "Mute microphone"}
+        >
+          {muted ? <MicOff size={24} /> : <Mic size={24} />}
+        </button>
+
+        <button
+          className={cx(styles.controlButton, !playing && styles.disabled)}
           onClick={toggleVideo}
-        />
-      )}
-      <PhoneOff size={55} className={cx(styles.icon)} onClick={leaveRoom}/>
+          title={playing ? "Turn off camera" : "Turn on camera"}
+        >
+          {playing ? <Video size={24} /> : <VideoOff size={24} />}
+        </button>
+
+        <button
+          className={cx(styles.controlButton, styles.endCall)}
+          onClick={leaveRoom}
+          title="Leave meeting"
+        >
+          <PhoneOff size={24} />
+        </button>
+      </div>
     </div>
   );
 };
