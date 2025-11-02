@@ -9,15 +9,25 @@ import styles from '@/styles/home.module.css'
 export default function Home() {
   const router = useRouter()
   const [roomId, setRoomId] = useState('')
+  const [userName, setUserName] = useState('')
 
   const createAndJoin = () => {
+    if (!userName.trim()) {
+      alert("Please enter your name")
+      return
+    }
     const roomId = uuidv4()
-    router.push(`/${roomId}`)
+    router.push(`/${roomId}?name=${encodeURIComponent(userName)}`)
   }
 
   const joinRoom = () => {
-    if (roomId) router.push(`/${roomId}`)
-    else {
+    if (!userName.trim()) {
+      alert("Please enter your name")
+      return
+    }
+    if (roomId) {
+      router.push(`/${roomId}?name=${encodeURIComponent(userName)}`)
+    } else {
       alert("Please provide a valid meeting ID to join the meeting")
     }
   }
@@ -58,6 +68,13 @@ export default function Home() {
           <div className={styles.joinSection}>
             <h3>Join a Meeting</h3>
             <div className={styles.joinForm}>
+              <input 
+                type="text"
+                placeholder='Enter your name' 
+                value={userName} 
+                onChange={(e) => setUserName(e?.target?.value)}
+                className={styles.meetingInput}
+              />
               <input 
                 type="text"
                 placeholder='Enter Meeting ID' 

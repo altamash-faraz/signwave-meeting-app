@@ -15,7 +15,8 @@ import { useRouter } from "next/router";
 
 const Room = () => {
   const socket = useSocket();
-  const { roomId } = useRouter().query;
+  const router = useRouter();
+  const { roomId, name } = router.query;
   const { peer, myId } = usePeer();
   const { stream } = useMediaStream();
   const {
@@ -29,11 +30,30 @@ const Room = () => {
   } = usePlayer(myId, roomId, peer);
 
   const [users, setUsers] = useState([])
+  const [userNames, setUserNames] = useState({})
+
+  // Join room with user name
+  useEffect(() => {
+    if (!socket || !myId || !roomId) return;
+    
+    const userName = name || `User ${myId.slice(0, 8)}`;
+    socket.emit('join-room', roomId, myId, userName);
+    setUserNames(prev => ({
+      ...prev,
+      [myId]: userName
+    }));
+  }, [socket, myId, roomId, name]);
 
   useEffect(() => {
     if (!socket || !peer || !stream) return;
-    const handleUserConnected = (newUser) => {
-      console.log(`user connected in room with userId ${newUser}`);
+    const handleUserConnected = (newUser, userName) => {
+      console.log(`user connected in room with userId ${newUser} and name ${userName}`);
+
+      // Store user name
+      setUserNames(prev => ({
+        ...prev,
+        [newUser]: userName || `User ${newUser.slice(0, 8)}`
+      }));
 
       const call = peer.call(newUser, stream);
 
@@ -145,6 +165,7 @@ const Room = () => {
             muted={playerHighlighted.muted}
             playing={playerHighlighted.playing}
             isActive
+            userName={userNames[myId] || 'You'}
           />
         )}
       </div>
@@ -158,6 +179,7 @@ const Room = () => {
               muted={muted}
               playing={playing}
               isActive={false}
+              userName={userNames[playerId] || `User ${playerId.slice(0, 8)}`}
             />
           );
         })}
