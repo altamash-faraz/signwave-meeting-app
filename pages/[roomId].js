@@ -108,15 +108,35 @@ const Room = () => {
       delete playersCopy[userId];
       setPlayers(playersCopy);
     }
+
+    const handleNameRequest = (requestedUserId) => {
+      // Send our name back if someone requests it
+      if (requestedUserId === myId && userNames[myId]) {
+        socket.emit('user-name-response', myId, userNames[myId], roomId);
+      }
+    }
+
+    const handleNameResponse = (userId, userName) => {
+      // Store the received name
+      setUserNames(prev => ({
+        ...prev,
+        [userId]: userName
+      }));
+    }
+
     socket.on("user-toggle-audio", handleToggleAudio);
     socket.on("user-toggle-video", handleToggleVideo);
     socket.on("user-leave", handleUserLeave);
+    socket.on("request-user-name", handleNameRequest);
+    socket.on("user-name-response", handleNameResponse);
     return () => {
       socket.off("user-toggle-audio", handleToggleAudio);
       socket.off("user-toggle-video", handleToggleVideo);
       socket.off("user-leave", handleUserLeave);
+      socket.off("request-user-name", handleNameRequest);
+      socket.off("user-name-response", handleNameResponse);
     };
-  }, [players, setPlayers, socket, users]);
+  }, [players, setPlayers, socket, users, myId, roomId, userNames]);
 
   useEffect(() => {
     if (!peer || !stream) return;
@@ -135,13 +155,18 @@ const Room = () => {
           },
         }));
 
+        // If we don't have the user's name, request it
+        if (!userNames[callerId] && socket) {
+          socket.emit('request-user-name', callerId, roomId);
+        }
+
         setUsers((prev) => ({
           ...prev,
           [callerId]: call
         }))
       });
     });
-  }, [peer, setPlayers, stream]);
+  }, [peer, setPlayers, stream, socket, roomId, userNames]);
 
   useEffect(() => {
     if (!stream || !myId) return;

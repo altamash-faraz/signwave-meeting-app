@@ -126,14 +126,6 @@ We welcome contributions! Please feel free to submit a Pull Request. For major c
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙋‍♂️ Support
-
-If you have any questions or need help, please:
-
-- 🐛 [Open an issue](https://github.com/altamash-faraz/signwave-meeting-app/issues)
-- 📧 Contact: [altamash.faraz@example.com](mailto:altamash.faraz@example.com)
-- 🌟 Star this repository if you found it helpful!
-
 ## 🌟 Acknowledgments
 
 - Built with ❤️ using modern web technologies
@@ -151,9 +143,3 @@ If you have any questions or need help, please:
 *Made with ❤️ by [Altamash Faraz](https://github.com/altamash-faraz)*
 
 </div>
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-## Repository
-
-This project is now available at: [https://github.com/altamash-faraz/signwave-meeting-app](https://github.com/altamash-faraz/signwave-meeting-app)

@@ -47,10 +47,6 @@ export default function Home() {
           </div>
           <span className={styles.logoText}>SignWave</span>
         </div>
-        <nav className={styles.nav}>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-        </nav>
       </header>
 
       {/* Main Content */}

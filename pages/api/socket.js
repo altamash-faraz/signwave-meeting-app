@@ -31,6 +31,16 @@ const SocketHandler = (req, res) => {
                 socket.join(roomId)
                 socket.broadcast.to(roomId).emit('user-leave', userId)
             })
+
+            socket.on('request-user-name', (userId, roomId) => {
+                socket.join(roomId)
+                socket.broadcast.to(roomId).emit('request-user-name', userId)
+            })
+
+            socket.on('user-name-response', (userId, userName, roomId) => {
+                socket.join(roomId)
+                socket.broadcast.to(roomId).emit('user-name-response', userId, userName)
+            })
         })
     }
     res.end();
