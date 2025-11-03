@@ -2,8 +2,6 @@
 
 <div align="center">
 
-![SignWave Banner](https://via.placeholder.com/800x200/4338ca/ffffff?text=SignWave+Meeting+App)
-
 **A next-generation video conferencing platform for seamless collaboration**
 
 [![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Visit_App-4338ca?style=for-the-badge)](https://signwave-meeting-app.onrender.com/)
@@ -89,18 +87,6 @@ Simply visit **[signwave-meeting-app.onrender.com](https://signwave-meeting-app.
 3. **🚪 Join Meeting** - Enter a room ID to join an existing meeting
 4. **📹 In Meeting** - Your video will start automatically, and you'll see other participants as they join
 5. **👥 User Names** - All participants are displayed with their chosen names for easy identification
-
-## 🎨 Screenshots
-
-<div align="center">
-
-### 🏠 Landing Page
-*Clean, modern interface for creating and joining meetings*
-
-### 📹 Video Meeting
-*Professional video conferencing with user names and real-time communication*
-
-</div>
 
 ## 🔧 Configuration
 
